@@ -1,0 +1,17 @@
+from distutils.core import setup
+from distutils.extension import Extension
+from Cython.Build import cythonize
+
+extension = Extension("d3thon",
+    [
+      "src/byte_analizer.py",
+      "src/main.py",
+      "src/bootstrap.py"
+    ],
+    extra_compile_args = ['-DCYTHON_PEP489_MULTI_PHASE_INIT=0', '-g', '-static']
+  )
+
+setup (
+  name = 'd3thon',
+  ext_modules = cythonize(extension)
+)
